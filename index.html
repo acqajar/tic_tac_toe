@@ -1,10 +1,38 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="css/chooseCharacter.css"/>
+	<script src="js/chooseCharacter.js" defer></script>
 	<script src="js/index.js"></script>
+	
 </head>
+
 <body>
-	<div id="player1"> Player 1 </div>
+
+	<!--           Below is the avatar selection part. Initialized before the Board game                     -->
+
+
+<p id='title'> Select a Character</p>	
+ <div id="selections">
+	<img class = "avatar" id="avatar1" src="images/6packLego.jpg" />
+	<img class = "avatar" id="avatar2" src="images/BatmanSuperman.jpg" />
+	<img class = "avatar" id="avatar3" src="images/legoFrozen.jpg" />
+	<img class = "avatar" id="avatar4" src="images/legoVaderWetFloor.jpg" />
+	<img class ="avatar" id="avatar5" src="images/stormTrooperheadphones.jpg" />
+	<img class = "avatar" id="avatar6" src="images/VaderBikeRide.jpg"/>
+	
+</div>
+
+
+
+
+
+
+<!--                  BoardGame: Play starts below. Above is Character selection                    -->	
+
+<div class = "containter" ng-show = "counter === 2">
+  </div>
+ 	<div id="player1"> Player 1 </div>
 	<div id="player1counter"> 0 </div>
 	<div id="player2"> Player 2 </div>
 	<div id="player2counter"> 0 </div>
@@ -25,8 +53,13 @@
 
 	<div id="reset">
 		<button onclick="reset();"> New Game </button>
+	
+
 	</div>
 
+
+	
+</div>
 </body>
 </html>
 <!-- div innerHTML input value -->

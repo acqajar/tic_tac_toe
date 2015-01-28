@@ -2,16 +2,60 @@
 <head>
 	
 	<link rel="stylesheet" type="text/css" href="css/chooseCharacter.css"/>
-
 	<title></title>
+	<script src="js/chooseCharacter.js" defer></script>
 </head>
+
 <body>
+<p id='title'> Select a Character</p>	
+
+
+<div id="selections">
+	<img class = "avatar" id="avatar1" src="images/6packLego.jpg" />
+	<img class = "avatar" id="avatar2" src="images/BatmanSuperman.jpg" />
+	<img class = "avatar" id="avatar3" src="images/legoFrozen.jpg" />
+	<img class = "avatar" id="avatar4" src="images/legoVaderWetFloor.jpg" />
+	<img class ="avatar" id="avatar5" src="images/stormTrooperheadphones.jpg" />
+	<img class = "avatar" id="avatar6" src="images/VaderBikeRide.jpg"/>
 	
-
-<div id="selections"></div>
-
-
-
-<script src="js/chooseCharacter.js"></script>
+</div>
 </body>
+<script>
+// var xAvatar,oAvatar;
+
+//  var imgs = document.getElementsByTagName('img');
+
+//    for (var i = 0; i < imgs.length; i++){
+
+           
+//            //attach event handler to each individual image 
+//             imgs[i].addEventListener('click', function () {
+
+
+//                  //store the url for this image being clicked
+//                  var imgSrc = this.getAttribute('src');
+//                               //below will set an images src 
+//                               //this.setAttribute('src',xAvatar);
+                 
+//                  //check who's turn it is
+//                  if( xTurn ){
+
+//                     //if it's x's turn, assign this avatar to them, and flip the turn
+//                  	xAvatar = imgSrc;
+//                  	XTurn = false;
+//                  }
+//                  else{
+
+//                  	//else it's o's turn, so assign the avatar to o, and importantly: 
+//                  	//at this stage both players have selected their avatars, so we can
+//                  	//move to game play
+//                  	oAvatar = imgSrc;
+
+//                  }
+
+//             })
+   
+//    }
+
+</script>
 </html>

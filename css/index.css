@@ -1,100 +1,70 @@
-/*#box {
-	width:300px;
-	height: 300px;
-	border: 10px solid black;
-	margin: auto;
-	margin-top:10%;
+
+
+body {
+	background-color: #FFD700;
+	width: 100%;
 }
 
-input {
-	width: 100px;
-	height: 100px;
-	border:2px solid black;
-	color:green;
-	font-size: 70px;
-	float:left;
+.column {
+	float: left;
+	padding-left: 1.5rem;
+	padding-right: 1rem;
 }
 
-#reset {
-	width:200px;
-	height:100px;
-	border: 2px solid black;
-	border-radius: 2px 2px 2px;
-	font-size: 30px;
-	margin-left:37em; 
-	margin-top:1em; 
-}*/
-#board {
-	position: relative;
-	width: 350px;
-	height: 350px;
-	margin: 0px auto;
-	font-size: 120px;
+.column.left {
+	width: 30%;
 }
-.square {
-	position: absolute;
-	width: 31%;
-	height: 31%;
+
+.column.right {
+	width: 60%;
+	margin-top: 3%;
+}
+
+
+h1.page-title {
 	text-align: center;
-	display: inline-block;
-}
-#sq0 {
-	top: 0%;
-	left: 1%;
-}
-#sq1 {
-	top: 0%;
-	left: 34%;
-}
-#sq2 {
-	top: 0%;
-	left: 67%;
-}
-#sq3 {
-	top: 34%;
-	left: 1%;
-}
-#sq4 {
-	top: 34%;
-	left: 34%;
-}
-#sq5 {
-	top: 34%;
-	left: 67%;
-}
-#sq6 {
-	top: 67%;
-	left: 1%;
-}
-#sq7 {
-	top: 67%;
-	left: 34%;
-}
-#sq8 {
-	top: 67%;
-	left: 67%;
+	margin-bottom: 0;
 }
 
-#ln0 {
-	height: 2%;
-	top: 34%;
-}
-#ln1 {
-	height: 2%;
-	top: 68%;
-}
-#ln2 {
-	width: 2%;
-	left: 32%;
-}
-#ln3 {
-	width: 2%;
-	left: 66%;
+h3.subtitle {
+	text-align: center;
+	font-style: italic;
+	margin: 0;
 }
 
+.square {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #FF69B4;
+    background-color: #AFEEEE;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 120px;
+}
 
+.square:hover {
+	background-color: #96E6B3;
+}
 
+/* --- Button Styling --- */
+/* This applies to the reset button. */
 
+button {
+	border: none;
+	background-color: #464E47;
+	width: 100%;
+	margin: 10% auto;
+	color: #FFFFFF;
+}
 
+button h5 {
+	color: #FFFFFF;
+	text-transform: uppercase;
+	padding: none;
+	text-align: center;
+}
 
-
+button:hover {
+	background-color: #568259;
+}

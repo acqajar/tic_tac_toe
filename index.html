@@ -42,10 +42,11 @@
           </h5></button>
         </div>
 
-        <!-- This is the right container that takes up 3/5 of the page. -->
+        <!-- This is the right column. -->
       <div class="column right">
 
-        <!-- This is the start of the game board. -->
+        <!-- This is the start of the game board.-->
+      
       <div id="board_wrapper">
         <div ng-class="{square:true, xSelected:square.playerMove == 'X', oSelected: square.playerMove == 'O'}"
         ng-repeat="square in board track by $index"

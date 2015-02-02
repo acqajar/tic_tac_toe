@@ -30,6 +30,7 @@ $scope.board = boardSync.$asArray();
 		{
 			for(var i = 0; i < 9; i++)
 			{
+				//create new record within an array
 				$scope.board.$add({playerMove: ""});
 			}
 		}
@@ -41,6 +42,7 @@ $scope.board = boardSync.$asArray();
 			for(var i = 0; i < 9; i++)
 			{
 				$scope.board[i].playerMove = "";
+				//push local changes to Firebase
 				$scope.board.$save(i);
 			}
 		}
@@ -154,6 +156,7 @@ $scope.makeMove = function(idx)
 			{
 				$scope.board[idx].playerMove = "X";
 				$scope.board.$save($scope.board[idx]);
+				$scope.players[0].playerTwo = true;
 				$scope.checkForWinners(scope.board[idx].playerMove);
 			}
 			//If the number of moves when /2 has a remainder of not 0, put an O. Save to database.
@@ -161,6 +164,7 @@ $scope.makeMove = function(idx)
 			{
 				$scope.board[idx].playerMove = "O";
 				$scope.board.$save($scope.board[idx]);
+				$scope.players[0].playerOne = true;
 				$scope.checkForWinners(scope.board[idx].playerMove);
 			}
 		//End of each turn, check for Wins. Add to number of moves. Save.	

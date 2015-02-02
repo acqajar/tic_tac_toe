@@ -1,7 +1,8 @@
-//creating an object. $scope.object = {name: "tony"}. In html, <div ng-repeat = "attr in object"> {{attr}} </div>
+/*creating an object. $scope.object = {name: "tony"}. 
+In html, <div ng-repeat = "attr in object"> {{attr}} </div>*/
 
 
-// Inspired by Wendy, creatively reimagined by me :)
+// Inspired by Wendy, Lauren, and Sam, while creatively reimagined by me :)
 /************************************************************************************
 *************************************************************************************
 *********************** Create Firebase Connection **********************************
@@ -28,13 +29,16 @@ app.controller("ticTacToeCtrl", function($scope, $firebase) {
   var boardSync = $firebase(boardRef);
     // download the data into a sorted array
 	// all server changes are applied in realtime and call it in DOM  with $scope
-  $scope.square = boardSync.$asArray();
+  $scope.board = boardSync.$asArray();
 
 // If board is not loaded, generate it
-	$scope.square.$loaded(function(){
-		if($scope.square.length == 0){
-			for(var i = 0; i < 9; i++){
-				$scope.square.$add({playerMove: ""});
+	$scope.board.$loaded(function()
+	{
+		if($scope.board.length == 0)
+		{
+			for(var i = 0; i < 9; i++)
+			{
+				$scope.board.$add({playerMove: ""});
 			}
 		}
 // in this case, it changes the text contained in each 
@@ -42,9 +46,10 @@ app.controller("ticTacToeCtrl", function($scope, $firebase) {
 // through the $scope.board[i].playerMove='' part 
 		else
 		{
-			for(var i = 0; i < 9; i++){
-				$scope.square[i].playerMove = "";
-				$scope.square.$save(i);
+			for(var i = 0; i < 9; i++)
+			{
+				$scope.board[i].playerMove = "";
+				$scope.board.$save(i);
 			}
 		}
 	});
@@ -89,20 +94,16 @@ app.controller("ticTacToeCtrl", function($scope, $firebase) {
  //download the data into a local object 
   $scope.players = playerSync.$asArray();
 
+  		$scope.movesByPlayer.$loaded(function(){
+		if($scope.movesByPlayer.length == 0){
+			$scope.movesByPlayer.$add({playerOne: false, playerTwo: true});
+		}
+		else{
+			$scope.movesByPlayer[0].playerOne = false;
+			$scope.movesByPlayer[0].playerTwo = true;
+			$scope.movesByPlayer.$save(0);
+		}
 
-	// $scope.players.$loaded(function()
-	// {
-	// 	if($scope.players.length == 0)
-	// 	{
-	// 		$scope.players.$add({playerOne: false, playerTwo: true});
-	// 	}
-	// 	else
-	// 	{
-	// 		$scope.players[0].playerOne = false;
-	// 		$scope.players[0].playerTwo = true;
-	// 		$scope.players.$save(0);
-	// 	}
-	// })
 
 
 
@@ -137,21 +138,21 @@ $scope.makeMove = function(idx){
     if ($scope.counter[0].numMoves == 0) //first move
     {
     	// If there is no element on the board where either user with symbol X or O has yet gone
-    	if (($scope.square[idx].playerMove !='X') && ($scope.square[idx].playerMove !='O') )
+    	if (($scope.board[idx].playerMove !='X') && ($scope.board[idx].playerMove !='O') )
     	{
     		//If the number of moves when /2 has a remainder of 0, put an X. Save to database.
 			if (($scope.counter[0].numMoves % 2) == 0) 
 			{
-				$scope.square[idx].playerMove = "X";
-				$scope.square.$save($scope.square[idx]);
-				$scope.checkForWinners(scope.square[idx].playerMove);
+				$scope.board[idx].playerMove = "X";
+				$scope.board.$save($scope.board[idx]);
+				$scope.checkForWinners(scope.board[idx].playerMove);
 			}
 			//If the number of moves when /2 has a remainder of not 0, put an O. Save to database.
 			else if (($scope.counter[0].numMoves % 2) != 0) 
 			{
-				$scope.square[idx].playerMove = "O";
-				$scope.square.$save($scope.square[idx]);
-				$scope.checkForWinners(scope.square[idx].playerMove);
+				$scope.board[idx].playerMove = "O";
+				$scope.board.$save($scope.board[idx]);
+				$scope.checkForWinners(scope.board[idx].playerMove);
 			}
 		//End of each turn, check for Wins. Add to number of moves. Save.	
 		$scope.counter[0].numMoves++;
@@ -174,7 +175,7 @@ function checkForWinners(piece) {
 	// console.log("the player number is: " + piece);
   for(var i = 0; i < $scope.winScenarios.length; i++) 
   	{
-	    if($scope.square[$scope.winScenarios[i][0]]==piece&&$scope.square[$scope.winScenarios[i][1]]==piece&&$scope.square[$scope.winScenarios[i][2]]==piece)
+	    if($scope.board[$scope.winScenarios[i][0]]==piece&&$scope.board[$scope.winScenarios[i][1]]==piece&&$scope.board[$scope.winScenarios[i][2]]==piece)
 	    {
 	    	// console.log("Position: " + $scope.winScenarios[i][i]);
 	    	// console.log("The piece is: " + piece);

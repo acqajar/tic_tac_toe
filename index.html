@@ -11,10 +11,10 @@
     <!-- Angularfire script file -->
     <script type="text/javascript" src="script/angularfire.js"></script>
     <!-- CSS stylesheet -->
-  	<link rel="stylesheet" type="text/css" href="style/index.css">
+  	<link rel="stylesheet" type="text/css" href="css/index.css">
+  
+
   </head>
-
-
 
   <body>
         <!-- This is the header for the page. -->
@@ -38,12 +38,18 @@
 
 
         <!-- This is the start of the game board. -->
-        
-        <div
-           ng-repeat="div in square track by $index"
-           ng-click="makeMove($index)"
-           ng-bind="square.moveByPlayer">
-      	</div>
+        <div id="board">
+
+        <div class="square" id="sq{{ $index }}" ng-repeat="sq in square track by $index"
+				ng-mouseenter="mouseEnter($index)" ng-mouseleave="mouseLeave($index)"
+				ng-click="makeMove($index)" ng-bind="sq.playerMove"></div>
+					<!-- Board Divisions -->
+	<div class="line animated fadeInRightBig" id="ln0"></div>
+	<div class="line animated fadeInRightBig" id="ln1"></div>
+	<div class="line animated fadeInUpBig" id="ln2"></div>
+	<div class="line animated fadeInUpBig" id="ln3"></div>
+</div>
+
 
 
   </body>

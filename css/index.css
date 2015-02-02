@@ -24,3 +24,77 @@ input {
 	margin-left:37em; 
 	margin-top:1em; 
 }*/
+#board {
+	position: relative;
+	width: 350px;
+	height: 350px;
+	margin: 0px auto;
+	font-size: 120px;
+}
+.square {
+	position: absolute;
+	width: 31%;
+	height: 31%;
+	text-align: center;
+	display: inline-block;
+}
+#sq0 {
+	top: 0%;
+	left: 1%;
+}
+#sq1 {
+	top: 0%;
+	left: 34%;
+}
+#sq2 {
+	top: 0%;
+	left: 67%;
+}
+#sq3 {
+	top: 34%;
+	left: 1%;
+}
+#sq4 {
+	top: 34%;
+	left: 34%;
+}
+#sq5 {
+	top: 34%;
+	left: 67%;
+}
+#sq6 {
+	top: 67%;
+	left: 1%;
+}
+#sq7 {
+	top: 67%;
+	left: 34%;
+}
+#sq8 {
+	top: 67%;
+	left: 67%;
+}
+
+#ln0 {
+	height: 2%;
+	top: 34%;
+}
+#ln1 {
+	height: 2%;
+	top: 68%;
+}
+#ln2 {
+	width: 2%;
+	left: 32%;
+}
+#ln3 {
+	width: 2%;
+	left: 66%;
+}
+
+
+
+
+
+
+

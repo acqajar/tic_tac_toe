@@ -1,4 +1,4 @@
-#box {
+/*#box {
 	width:300px;
 	height: 300px;
 	border: 10px solid black;
@@ -16,11 +16,11 @@ input {
 }
 
 #reset {
-	/*width:200px;
+	width:200px;
 	height:100px;
 	border: 2px solid black;
 	border-radius: 2px 2px 2px;
-	font-size: 30px;*/
-	margin-left:37em; /* 48%*/
-	margin-top:1em; /* 48%*/
-}
+	font-size: 30px;
+	margin-left:37em; 
+	margin-top:1em; 
+}*/

@@ -1,65 +1,50 @@
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="css/index.css"/>
-	<link rel="stylesheet" type="text/css" href="css/chooseCharacter.css"/>
-	<script src="js/chooseCharacter.js" defer></script>
-	<script src="js/index.js"></script>
-	
-</head>
-
-<body>
-
-	<!--           Below is the avatar selection part. Initialized before the Board game                     -->
-
-
-<p id='title'> Select a Character</p>	
- <div id="selections">
-	<img class = "avatar" id="avatar1" src="images/6packLego.jpg" />
-	<img class = "avatar" id="avatar2" src="images/BatmanSuperman.jpg" />
-	<img class = "avatar" id="avatar3" src="images/legoFrozen.jpg" />
-	<img class = "avatar" id="avatar4" src="images/legoVaderWetFloor.jpg" />
-	<img class ="avatar" id="avatar5" src="images/stormTrooperheadphones.jpg" />
-	<img class = "avatar" id="avatar6" src="images/VaderBikeRide.jpg"/>
-	
-</div>
+<html ng-app="ticTacToeApp" ng-controller="ticTacToeCtrl">
+  <head>
+  	<title>Tic Tac Toe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
+    <!-- NG Route -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+    <!-- Angularfire script file -->
+    <script type="text/javascript" src="script/angularfire.js"></script>
+    <!-- CSS stylesheet -->
+  	<link rel="stylesheet" type="text/css" href="style/index.css">
+  </head>
 
 
 
+  <body>
+        <!-- This is the header for the page. -->
+          <h1> Tic Tac Toe </h1>
+
+
+     <!-- This is the body -->
+          <h3>Instructions</h2>
+          <p>TTT Instructions</p>
+          <p>Stuff will be said. What is said will be stuff. What else? </p>
+          <h5>Extras</h5>
+          <p>This is where any extras will go, like a score card or place to choose icons.</p>
+          <h5>Scorecard</h5>
+          <p>Player 1 -- </p>
+          <p>Player 2 -- </p>
+
+          <!-- This is the button to reload a new game. -->
+          <button ng-click="reset()"><h5>New Game</h5></button>
+        </div>
 
 
 
-<!--                  BoardGame: Play starts below. Above is Character selection                    -->	
-
-<div class = "containter" ng-show = "counter === 2">
-  </div>
- 	<div id="player1"> Player 1 </div>
-	<div id="player1counter"> 0 </div>
-	<div id="player2"> Player 2 </div>
-	<div id="player2counter"> 0 </div>
-
-	<div id="box">
-		<input class="tiles" type="button" id="btn1" button onclick="Btnselect('0')"/>
-		<input class="tiles" type="button" id="btn2" button onclick="Btnselect('1');"/>
-		<input class="tiles" type="button" id="btn3" button onclick="Btnselect('2');"/>
-		<input class="tiles" type="button" id="btn4" button onclick="Btnselect('3');"/>
-		<input class="tiles" type="button" id="btn5" button onclick="Btnselect('4');"/>
-		<input class="tiles" type="button" id="btn6" button onclick="Btnselect('5');"/>
-		<input class="tiles" type="button" id="btn7" button onclick="Btnselect('6');"/>
-		<input class="tiles" type="button" id="btn8" button onclick="Btnselect('7');"/>
-		<input class="tiles" type="button" id="btn9" button onclick="Btnselect('8');"/>
-	</div>
+        <!-- This is the start of the game board. -->
+        
+        <div
+           ng-repeat="div in square track by $index"
+           ng-click="makeMove($index)"
+           ng-bind="square.moveByPlayer">
+      	</div>
 
 
-
-	<div id="reset">
-		<button onclick="reset();"> New Game </button>
-	
-
-	</div>
-
-
-	
-</div>
-</body>
+  </body>
 </html>
-<!-- div innerHTML input value -->

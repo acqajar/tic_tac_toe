@@ -32,6 +32,7 @@ $scope.board = boardSync.$asArray();
 			{
 				//create new record within an array
 				$scope.board.$add({playerMove: ""});
+				$scope.board.$save(i);
 			}
 		}
 // in this case, it changes the text contained in each 
@@ -93,7 +94,6 @@ $scope.board = boardSync.$asArray();
 //Creates & Saves players to Firebase
   	$scope.players.$loaded(function()
   	{
-  			//When no 
 		if($scope.players.length == 0)
 		{
 			$scope.players.$add({playerOne: false, playerTwo: true});
@@ -142,38 +142,29 @@ $scope.winScenarios =
 
 $scope.makeMove = function(idx)
 {
-    if ($scope.counter[0].numMoves == 0) //no move made yet...
-    {
-    	//set PlayerOne to True, and PlayerTwo to False.
-    	$scope.players[0].playerOne = true;
-    	$scope.players[0].playerTwo = false;
+ console.log($scope.counter[0].numMoves);
+ console.log($scope.counter);   
 
-    	// If there is no element on the board where either user with symbol X or O has yet gone
-    	if (($scope.board[idx].playerMove !='X') && ($scope.board[idx].playerMove !='O') && ($scope.counter[0].numMoves >= 0))
-    	{
-    		//If the number of moves when /2 has a remainder of 0, put an X. Save to database.
-			if ((($scope.counter[0].numMoves % 2) == 0) && ($scope.players[0].playerOne == true)) 
+			if ((($scope.counter[0].numMoves % 2) == 0) && ($scope.board[idx].playerMove!="X") && ($scope.board[idx].playerMove!="O")) 
 			{
 				$scope.board[idx].playerMove = "X";
 				$scope.board.$save($scope.board[idx]);
 				$scope.players[0].playerTwo = true;
-				$scope.checkForWinners(scope.board[idx].playerMove);
+				// $scope.checkForWinners(scope.board[idx].playerMove);
 			}
 			//If the number of moves when /2 has a remainder of not 0, put an O. Save to database.
-			else if ((($scope.counter[0].numMoves % 2) != 0) && ($scope.players[0].playerTwo == true)) {
+			else if ((($scope.counter[0].numMoves % 2) != 0) && ($scope.board[idx].playerMove!="X") && ($scope.board[idx].playerMove!="O")) 
 			{
 				$scope.board[idx].playerMove = "O";
 				$scope.board.$save($scope.board[idx]);
-				$scope.players[0].playerOne = true;
-				$scope.checkForWinners(scope.board[idx].playerMove);
+				$scope.players[0].playerOne = false;
 			}
 		//End of each turn, check for Wins. Add to number of moves. Save.	
 		$scope.counter[0].numMoves++;
+		console.log($scope.counter[0].numMoves);
 		$scope.counter.$save[0];
-		$scope.checkForWinners(scope.board[idx].playerMove);
+		// $scope.checkForWinners(scope.board[idx].playerMove);
 
-		}
-	}
 }
 
 /************************************************************************************
@@ -185,30 +176,30 @@ Then check against array to see if array on board is equal to any of the winScen
 boardArrary, with the argument, winScenarios, loops, based on the length value of winScenarios, 
 and discovers that item 0, item 1 and item 2 are equal to symbol, execute the instructions*/
 
-function checkForWinners(piece) {
-	// console.log("winScenarios length: " + $scope.winScenarios.length);
-	// console.log("the player number is: " + piece);
-  for(var i = 0; i < $scope.winScenarios.length; i++) 
-  	{
-	    if($scope.board[$scope.winScenarios[i][0]]==piece&&$scope.board[$scope.winScenarios[i][1]]==piece&&$scope.board[$scope.winScenarios[i][2]]==piece)
-	    {
-	    	// console.log("Position: " + $scope.winScenarios[i][i]);
-	    	// console.log("The piece is: " + piece);
-	      alert(piece + " Won!")
-	      $scope.reset();
-	        // if (piece == "X")
-	        // {
-	        //   $scope.player1_counter++;
-	        //   $scope.document.getElementById("player1counter").innerHTML = player1_counter;
-	        // }
-	        // else 
-	        //  {
-	        //    $scope.player2_counter++;
-	        //    $scope.document.getElementById("player2counter").innerHTML = player2_counter; 
-	        //  } 
-	  	}
-  	}
-}
+// function checkForWinners(piece) {
+// 	// console.log("winScenarios length: " + $scope.winScenarios.length);
+// 	// console.log("the player number is: " + piece);
+//   for(var i = 0; i < $scope.winScenarios.length; i++) 
+//   	{
+// 	    if($scope.board[$scope.winScenarios[i][0]]==piece&&$scope.board[$scope.winScenarios[i][1]]==piece&&$scope.board[$scope.winScenarios[i][2]]==piece)
+// 	    {
+// 	    	// console.log("Position: " + $scope.winScenarios[i][i]);
+// 	    	// console.log("The piece is: " + piece);
+// 	      alert(piece + " Won!")
+// 	      $scope.reset();
+// 	        // if (piece == "X")
+// 	        // {
+// 	        //   $scope.player1_counter++;
+// 	        //   $scope.document.getElementById("player1counter").innerHTML = player1_counter;
+// 	        // }
+// 	        // else 
+// 	        //  {
+// 	        //    $scope.player2_counter++;
+// 	        //    $scope.document.getElementById("player2counter").innerHTML = player2_counter; 
+// 	        //  } 
+// 	  	}
+//   	}
+// }
 
 /************************************************************************************
 ************************************ Tie Check! *************************************
@@ -246,7 +237,7 @@ $scope.reset = function()
 
 
 
-};
+
 
 });
 
